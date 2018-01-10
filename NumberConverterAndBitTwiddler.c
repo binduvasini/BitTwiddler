@@ -29,10 +29,10 @@ int dec_str_to_unsigned(struct value_st *v_st_p)
     	int factor = 10;
     	len = strlen(v_st_p->arg);
     
-    	for (i = 0; i < len; i++) {
-		x = x * factor;
-        	d = v_st_p->arg[i] - '0';
-       	 	x = x + d;
+    	for (i = 0; i < len; i++) { //v_st_p->arg = '713'
+			x = x * factor; //first time: 0 , second : 70, third: 710
+        	d = v_st_p->arg[i] - '0'; //for 7, the ascii value is 55. subtracting it with 48 to get the value 7.
+       	 	x = x + d;  //first time: 7, second: 71, third: 713
     	}
     	v_st_p->normalized = x;
 	if(strcmp(v_st_p->arg,"0")!=0 && x==0) return 1;
